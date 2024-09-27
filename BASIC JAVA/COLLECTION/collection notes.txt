@@ -1,0 +1,232 @@
+
+Collection Framework
+
+Collection and Collections
+
+List Set Map
+
+equals() and hash Code() Methods 
+
+
+Comparable and Comparator
+ 
+Iterator-> Fail Fast Iterator, and Fail Safe Iterator
+
+
+Generics
+
+
+
+
+
+. What is the Java Collections Framework?
+---------------------------------------------------
+The Java Collections Framework is a set of classes and interfaces that provide commonly used data structures and algorithms for manipulating collections of objects. It includes interfaces like List, Set, and Map, and classes like ArrayList, HashSet, and HashMap. The framework provides methods for inserting, deleting, and accessing elements, making it easier to manage groups of objects.
+
+
+equals and hashcode methods
+------------------------------------
+
+
+The equals() method is  used to compare two objects for equality . It is defined in the object class.
+The Hashcode() method is used to generate a hashcode value for an object . It is also defined in the Object class.
+
+The general contract between equals() and hashcode() is
+-> If two objects are equal , according to the equals method, their hash code must be equal as well.
+-> If two objects have the same hashcode , they may or may not be equal according to the equals() method.
+     It is possible for different objects to have the same hashcode  due to collisions.
+
+
+When you overrides the equals() method , you should ensure that the hashcode() method is also overridden consistently to satisfy the contract.
+Failure to do so can lead to unexpected behaviour when objects are used as keys in hash-based collections.
+
+
+
+Generic Collection
+--------------------
+Java new generic collection allows you to have only one type of object in a collection.
+ Now it is type-safe, so typecasting is not required at runtime.
+In a generic collection, we specify the type in angular braces.
+ Now ArrayList is forced to have the only specified type of object in it. If you try to add another type of object, it gives a compile-time error.
+or
+
+The benefits of using the generic collection are:
+
+If the programmers are using generic class, they don’t require typecasting.
+It is type-safe and can be checked at the time of compilation.
+It provides the stability of the code by detecting bug at the compilation time.
+
+
+
+Array list
+-------------------
+Java Array list class uses a dynamic array for storing the elements. 
+It is like an array, but there is no size limit.
+. We can add or remove elements anytime. So, it is much more flexible than the traditional array. It is found in the java.util package
+o	Java ArrayList class can contain duplicate elements.
+o	Java ArrayList class maintains insertion order.
+
+o	Java ArrayList class is non synchronized.
+o	Java ArrayList allows random access because the array works on an index basis.
+o	In ArrayList, manipulation is a little bit slower than the LinkedList in Java because a lot of shifting needs to occur if any element is removed from the array list.
+o	We can not create an array list of the primitive types, such as int, float, char, etc. It is required to use the required wrapper class in such cases. For example:
+1.	ArrayList<int> al = ArrayList<int>(); // does not work  
+2.	ArrayList<Integer> al = new ArrayList<Integer>(); // works fine  
+o	Java ArrayList gets initialized by the size. The size is dynamic in the array list, which varies according to the elements getting added or removed from the list.
+
+
+
+
+
+LinkedList
+-----------------------------
+
+Java LinkedList class uses a doubly linked list to store the elements. It provides a linked-list data structure. 
+o	Java LinkedList class can contain duplicate elements.
+o	Java LinkedList class maintains insertion order.
+o	Java LinkedList class is non synchronized.
+o	In Java LinkedList class, manipulation is fast because no shifting needs to occur.
+-> Whenever you try to add elements in between linkedlist, one new linkedlist is created and element is added , this elements points to next elements, only link transfer happens 
+, no shifting happens.
+
+
+
+Hash Set
+-----------------------------
+
+Java HashSet class is used to create a collection that uses a hash table for storage. It inherits the AbstractSet class and implements Set interface.
+The important points about Java HashSet class are:
+o	HashSet stores the elements by using a mechanism called hashing.
+o	HashSet contains unique elements only.
+o	HashSet allows null value.
+o	HashSet class is non synchronized.
+o	HashSet doesn't maintain the insertion order. Here, elements are inserted on the basis of their hashcode.
+o	HashSet is the best approach for search operations.
+o	The initial default capacity of HashSet is 16, and the load factor is 0.75.
+
+
+Linked HashSet 
+-------------------------------
+Java LinkedHashSet class is a Hashtable and Linked list implementation of the Set interface.
+ It inherits the HashSet class and implements the Set interface.
+o	Java LinkedHashSet class contains unique elements only like HashSet.
+o	Java LinkedHashSet class provides all optional set operations and permits null elements.
+o	Java LinkedHashSet class is non-synchronized.
+o	Java LinkedHashSet class maintains insertion order.
+Note: Keeping the insertion order in the LinkedHashset has some additional costs, both in terms of extra memory and extra CPU cycles. Therefore, if it is not required to maintain the insertion order, go for the lighter-weight HashMap or the HashSet instead.
+
+Tree Set
+--------------------------------
+
+Java TreeSet class implements the Set interface that uses a tree for storage. The objects of the TreeSet class are stored in ascending order.
+
+o	Java TreeSet class contains unique elements only like HashSet.
+o	Java TreeSet class access and retrieval times are quiet fast.
+o	Java TreeSet class doesn't allow null element.
+o	Java TreeSet class is non synchronized.
+o	Java TreeSet class maintains ascending order.
+
+
+Java Map Interface
+--------------------------------
+
+A map contains values on the basis of key, i.e. key and value pair. Each key and value pair is known as an entry. A Map contains unique keys.
+A Map is useful if you have to search, update or delete elements on the basis of a key.
+A Map doesn't allow duplicate keys, but you can have duplicate values. HashMap and LinkedHashMap allow null keys and values, but TreeMap doesn't allow any null key or value.
+A Map can't be traversed, so you need to convert it into Set using keySet() or entrySet() method.
+
+HashMap 
+-----------------------
+
+Java HashMap class implements the Map interface which allows us to store key and value pair, where keys should be unique. 
+If you try to insert the duplicate key, it will replace the element of the corresponding key.
+ It is easy to perform operations using the key index like updation, deletion, etc. HashMap class is found in the java.util package.
+
+HashMap in Java is like the legacy Hashtable class, but it is not synchronized. It allows us to store the null elements as well, but there should be only one null key.
+o	Java HashMap contains values based on the key.
+o	Java HashMap contains only unique keys.
+o	Java HashMap may have one null key and multiple null values.
+o	Java HashMap is non synchronized.
+o	Java HashMap maintains no order.
+o	The initial default capacity of Java HashMap class is 16 with a load factor of 0.75.
+
+
+What is Hashing
+-------------------
+It is the process of converting an object into an integer value. The integer value helps in indexing and faster searches.
+
+
+
+ConcurrentHashMap
+-----------------------
+It is  a thread safe variant of hashmap.
+It is designed for concurrency, allowing multiple threads 
+
+
+
+
+
+
+
+
+
+
+
+
+ What makes a HashSet different from a Tree Set?
+---------------------------------------------------------------
+
+Although both HashSet and Tree Set are not synchronized and ensure that duplicates are not present, there are certain properties that distinguish a HashSet from a Tree Set.
+
+Implementation: 
+-> For a HashSet, the hash table is utilized for storing the elements in an unordered manner. However, 
+-> Tree Set makes use of the red-black tree to store the elements in a sorted manner.
+
+Complexity/ Performance: 
+-> For adding, retrieving, and deleting elements, the time amortized complexity is O(1) for a HashSet.
+->  The time complexity for performing the same operations is a bit higher for Tree Set and is equal to O(log n). 
+-> Overall, the performance of HashSet is faster in comparison to Tree Set.
+
+Methods: 
+
+
+-> hash Code() and equals() are the methods utilized by HashSet for making comparisons between the objects. 
+-> Conversely, compare To() and compare() methods are utilized by Tree Set to facilitate object comparisons.
+
+Objects type: 
+-> Heterogeneous and null objects can be stored with the help of HashSet. 
+-> In the case of a Tree Set, runtime exception occurs while inserting heterogeneous objects or null objects
+
+
+
+
+ How does the size of Array List grow dynamically? And also state how it is implemented internally.
+----------------------------------------------------------------------------------------------------------------
+
+Array List is implemented in such a way that it can grow dynamically. We don't need to specify the size of Array List. For adding the values in it, 
+
+the methodology it uses is -
+
+1. Consider initially that there are 2 elements in the Array List. [2, 3].
+
+
+2. If we need to add the element into this. Then internally what will happen is-
+
+Array List will allocate the new Array List of Size (current size + half of the current size). And add the old elements into the new. Old - [2, 3],    New - [2, 3, null].
+
+Then the new value will be inserted into it. [2, 3, 4, null]. And for the next time, the extra space will be available for the value to be inserted.
+
+3. This process continues and the time taken to perform all of these is considered as the amortized constant time. 
+
+This is how the Array List grows dynamically. And when we delete any entry from the Array List then the following steps are performed -
+
+1. It searches for the element index in the array. Searching takes some time. Typically it’s O(n) because it needs to search for the element in the entire array.
+
+
+2. After searching the element, it needs to shift the element from the right side to fill the index.
+
+
+So this is how the elements are deleted from the Array List internally. Similarly, the search operations are also implemented internally as defined in removing elements from the list (searching for elements to delete).
+
+
+

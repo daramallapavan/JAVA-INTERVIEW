@@ -1,0 +1,492 @@
+
+
+Aggregation
+---------------------
+It is a special form of Association where:
+
+It represents Has-A’s relationship.
+It is a unidirectional association i.e. a one-way relationship. For example, a department can have students but vice versa is not possible and thus unidirectional in nature.
+In Aggregation, both the entries can survive individually which means ending one entity will not affect the other entity.
+ 
+
+When do we use Aggregation ?? 
+
+Code reuse is best achieved by aggregation.  
+
+Composition 
+----------------------
+Composition is a restricted form of Aggregation in which two entities are highly dependent on each other.  
+
+It represents part-of relationship.
+In composition, both entities are dependent on each other.
+When there is a composition between two entities, the composed object cannot exist without the other entity.
+
+
+
+Difference Between Aggregation and Composition in Java
+Aggregation 
+
+Composition 
+
+Aggregation can be described as a “Has-a” relationship, which denotes the association between objects.	Composition means one object is contained in another object. It is a special type of aggregation (i.e. Has-a relationship), which implies one object is the owner of another object, which can be called an ownership association.
+There is mutual dependency among objects.	There is a unidirectional relationship, this is also called “part of” relationship.
+It is a weak type of association, both objects have their own independent lifecycle.	It is a strong type of association (aggregation), the child object does not have its own life cycle. 
+The associated object can exist independently and have its own lifecycle. 	The child’s life depends upon the parent’s life. Only the parent object has an independent lifecycle.
+UML representation of White Diamond denotes aggregation.	UML representation of Black Diamond denotes composition.
+
+For example, the relationship between a student and a department. The student may exist without a department.
+	For example, a file containing in a folder, if the folder deletes all files inside will be deleted. The file can not exist without a folder.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Association is a relation between two separate classes which is established through their Objects.
+ Association can be one-to-one, one-to-many, many-to-one, many-to-many. 
+In Object-Oriented programming, an Object communicates to another object to use functionality and services provided by that object.
+
+ Composition and Aggregation are the two forms of association. 
+
+Association in Java
+
+Aggregation
+It is a special form of Association where:  
+
+It represents Has-A’s relationship.
+It is a unidirectional association i.e. a one-way relationship. For example, a department can have students but vice versa is not possible and thus unidirectional in nature.
+In Aggregation, both entries can survive individually which means ending one entity will not affect the other entity.
+Aggregation 
+Aggregation Example:
+
+
+// Java program to illustrate
+// Concept of Aggregation
+
+// Importing required classes
+import java.io.*;
+import java.util.*;
+
+// Class 1
+// Student class
+class Student {
+
+    // Attributes of Student
+    private String studentName;
+    private int studentId;
+
+    // Constructor of Student class
+    public Student(String studentName, int studentId)
+    {
+        this.studentName = studentName;
+        this.studentId = studentId;
+    }
+
+    public int getstudentId() { 
+      return studentId; 
+    }
+
+    public String getstudentName() {
+      return studentName; 
+    }
+}
+
+// Class 2
+// Department class 
+// Department class contains list of Students
+class Department {
+
+    // Attributes of Department class
+    private String deptName;
+    private List<Student> students;
+
+    // Constructor of Department class
+    public Department(String deptName, List<Student> students)
+    {
+        this.deptName = deptName;
+        this.students = students;
+    }
+
+    public List<Student> getStudents() {
+      return students; 
+    }
+
+    public void addStudent(Student student)
+    {
+        students.add(student);
+    }
+}
+
+// Class 3
+// Institute class
+// Institute class contains the list of Departments
+class Institute {
+
+    // Attributes of Institute
+    private String instituteName;
+    private List<Department> departments;
+
+    // Constructor of Institute class
+    public Institute(String instituteName,
+                     List<Department> departments)
+    {
+        // This keyword refers to current instance itself
+        this.instituteName = instituteName;
+        this.departments = departments;
+    }
+
+    public void addDepartment(Department department)
+    {
+        departments.add(department);
+    }
+
+    // Method of Institute class
+    // Counting total students in the institute
+    public int getTotalStudentsInInstitute()
+    {
+        int noOfStudents = 0;
+        List<Student> students = null;
+
+        for (Department dept : departments) {
+            students = dept.getStudents();
+
+            for (Student s : students) {
+                noOfStudents++;
+            }
+        }
+        return noOfStudents;
+    }
+}
+
+// Class 4
+// main class
+class AggregationExample {
+
+    // main driver method
+    public static void main(String[] args)
+    {
+        // Creating independent Student objects
+        Student s1 = new Student("Parul", 1);
+        Student s2 = new Student("Sachin", 2);
+        Student s3 = new Student("Priya", 1);
+        Student s4 = new Student("Rahul", 2);
+
+        // Creating an list of CSE Students
+        List<Student> cse_students = new ArrayList<Student>();
+        cse_students.add(s1);
+        cse_students.add(s2);
+
+        // Creating an initial list of EE Students
+        List<Student> ee_students = new ArrayList<Student>();
+        ee_students.add(s3);
+        ee_students.add(s4);
+
+        // Creating Department object with a Students list
+        // using Aggregation (Department "has" students)
+        Department CSE = new Department("CSE", cse_students);
+        Department EE = new Department("EE", ee_students);
+
+        // Creating an initial list of Departments
+        List<Department> departments = new ArrayList<Department>();
+        departments.add(CSE);
+        departments.add(EE);
+
+        // Creating an Institute object with Departments list
+        // using Aggregation (Institute "has" Departments)
+        Institute institute = new Institute("BITS", departments);
+
+        // Display message for better readability
+        System.out.print("Total students in institute: ");
+
+        // Calling method to get total number of students
+        // in the institute and printing on console
+        System.out.print(
+            institute.getTotalStudentsInInstitute());
+    }
+}
+
+Output
+Total students in institute: 4
+Explanation of the above Program:
+
+In this example,
+
+There is an Institute which has no. of departments like CSE, EE. Every department has no. of students.
+So, we make an Institute class that has a reference to Object or no. of Objects (i.e. List of Objects) of the Department class.
+That means Institute class is associated with Department class through its Object(s).
+And Department class has also a reference to Object or Objects (i.e. List of Objects) of the Student class means it is associated with the Student class through its Object(s). 
+It represents a Has-A relationship. In the above example: Student Has-A name. Student Has-A ID. Department Has-A Students as depicted from the below media. 
+ 
+
+Aggregation Example
+
+Note: Code reuse is best achieved by aggregation.  
+
+Composition 
+Composition is a restricted form of Aggregation in which two entities are highly dependent on each other.  
+
+It represents part-of relationship.
+In composition, both entities are dependent on each other.
+When there is a composition between two entities, the composed object cannot exist without the other entity.
+Composition
+Composition Example:
+
+
+// Java program to illustrate
+// Concept of Composition
+
+// Importing required classes
+import java.io.*;
+import java.util.*;
+
+// Class 1
+// Department class
+class Department {
+
+    // Attributes of Department
+    public String departmentName;
+
+    // Constructor of Department class
+    public Department(String departmentName)
+    {
+        this.departmentName = departmentName;
+    }
+
+    public String getDepartmentName()
+    {
+        return departmentName;
+    }
+}
+
+// Class 2
+// Company class
+class Company {
+
+    // Reference to refer to list of books
+    private String companyName;
+    private List<Department> departments;
+
+    // Constructor of Company class
+    public Company(String companyName)
+    {
+        this.companyName = companyName;
+        this.departments = new ArrayList<Department>();
+    }
+
+    // Method
+    // to add new Department to the Company
+    public void addDepartment(Department department)
+    {
+        departments.add(department);
+    }
+
+    public List<Department> getDepartments()
+    {
+        return new ArrayList<>(departments);
+    }
+
+    // Method
+    // to get total number of Departments in the Company
+    public int getTotalDepartments()
+    {
+        return departments.size();
+    }
+}
+
+// Class 3
+// Main class
+class CompositonExample {
+
+    // Main driver method
+    public static void main(String[] args)
+    {
+        // Creating a Company object
+        Company techCompany = new Company("Tech Corp");
+
+        techCompany.addDepartment(new Department("Engineering"));
+        techCompany.addDepartment(new Department("Operations"));
+        techCompany.addDepartment(new Department("Human Resources"));
+        techCompany.addDepartment(new Department("Finance"));
+
+        int d = techCompany.getTotalDepartments();
+        System.out.println("Total Departments: " + d);
+
+        System.out.println("Department names: ");
+        for (Department dept : techCompany.getDepartments()) {
+            System.out.println("- " + dept.getDepartmentName());
+        }
+    }
+}
+
+Output
+Total Departments: 4
+Department names: 
+- Engineering
+- Operations
+- Human Resources
+- Finance
+
+Explanation of the above Program:
+
+In the above example,
+
+A company can have no. of departments.
+All the departments are part-of the Company.
+So, if the Company gets destroyed then all the Departments within that particular Company will be destroyed, i.e. Departments can not exist independently without the Company.
+That’s why it is composition. Department is Part-of Company.
+Aggregation vs Composition 
+Dependency: Aggregation implies a relationship where the child can exist independently of the parent. For example, Bank and Employee, delete the Bank and the Employee still exist. whereas Composition implies a relationship where the child cannot exist independent of the parent. Example: Human and heart, heart don’t exist separate to a Human
+Type of Relationship: Aggregation represents “has-a” relationship whereas, Composition represents “part-of” relationship.
+Type of association: Composition is a strong Association whereas, Aggregation is a weak Association.
+Example for Composition:
+
+
+// Java Program to Illustrate
+// Composition
+
+// Importing I/O classes
+import java.io.*;
+
+// Class 1
+// Engine class which will be used by car.
+class Engine {
+  
+    // Method to start the engine
+    public void work()
+    {
+        // Print statement whenever this method is called
+        System.out.println(
+            "Engine of car has been started ");
+    }
+}
+
+// Class 2
+// Car class
+class Car {
+
+    // For a car to move,
+    // it needs to have an engine.
+    private final Engine engine;
+
+    // Constructor of this class
+    public Car()
+    {
+        this.engine = new Engine();   // Composition
+    }
+
+    // Method
+    // Car start moving by starting engine
+    public void move()
+    {
+        engine.work();
+          System.out.println("Car is moving");
+    }
+}
+
+// Class 3
+// Main class
+class CompositionCarExample {
+
+    // Main driver method
+    public static void main(String[] args)
+    {
+        // Creating a car object, 
+        // which will also initializes the engine class object
+        Car car = new Car();
+
+        // Making car to move by calling
+        // move() method inside main()
+        car.move();
+    }
+}
+
+Output
+Engine of car has been started 
+Car is moving
+
+Explanation of the above Program:
+
+In the above case of composition, the Car owns the Engine object (i.e. Engine cannot exist without the Car object).
+
+Example for Aggregation:
+
+
+// Java Program to illustrate 
+// Aggregation
+
+import java.io.*;
+
+// Class 1
+// Engine class
+class Engine {
+  
+      // attributes of Engine
+      private String engineType;
+      
+    // Constructor
+      public Engine(String engineType) {
+          this.engineType = engineType;
+    }      
+  
+      public String getEngineType() {
+      return engineType;
+    }
+      
+    // Method to start the engine
+    public void work()
+    {
+        // Print statement whenever this method is called
+        System.out.println("Engine of car has been started");
+    }
+}
+
+// Class 2
+// Car class
+class Car {
+
+    // For a car to move,
+    // it needs to have an engine.
+    private Engine engine;
+    
+      // Constructor
+    public Car(Engine engine)
+    {
+        this.engine = engine;   // Aggregation
+    }
+
+    // Method
+    // Car start moving by starting engine
+    public void move()
+    {
+          if (engine != null) {
+              engine.work();
+              System.out.println("Car is moving");
+        }
+          else {
+              System.out.println("Car cannot start without engine");
+        }
+    }
+}
+
+// Class 3
+// Main class
+class AggregationCarExample {
+    public static void main (String[] args) {
+          
+          // Creating an independent Engine Object
+          Engine engine = new Engine("V10");
+      
+          // Creating a Car object, by passing the engine
+          // such that, Car "has" Engine
+          Car car = new Car(engine);
+          
+          car.move();
+        System.out.println("Engine Type: " + engine.getEngineType());
+    }
+}
+
+Output
+Engine of car has been started
+Car is moving
+Engine Type: V10
+
+Explanation of the above Program:
+
+In the above case of aggregation, the the Engine object is independent of the Car object (i.e. Engine can exist without the Car object).

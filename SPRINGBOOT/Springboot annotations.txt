@@ -1,0 +1,150 @@
+@Component:
+ ------------------------
+It is a class-level annotation. 
+It is used to mark a Java class as a bean.
+ A Java class annotated with @Component is found during the class path. 
+The Spring Framework pick it up and configure it in the application context as a Spring Bean.
+
+
+@Controller:
+------------------
+
+The @Controller is a class-level annotation. 
+It is a specialization of @Component. It marks a class as a web request handler. 
+It is often used to serve web pages. By default, it returns a string that indicates which route to redirect. It is mostly used with @RequestMapping annotation.
+
+
+@Repository:
+------------------
+ It is a class-level annotation. 
+The repository is a DAOs (Data Access Object) that access the database directly. The repository does all the operations related to the database.
+
+
+@Service:
+--------------
+ It is also used at class level. 
+It tells the Spring that class contains the business logic.
+
+
+
+@RestController:
+------------------
+ This annotation is used to define a RESTful web service controller. 
+It is a specialized version of the @Controller annotation that includes the @ResponseBody annotation by default.
+
+
+@ResponseBody: 
+------------------
+It binds the method return value to the response body. It tells the Spring Boot Framework to serialize a return an object into JSON and XML format.
+
+The @ResponseBody annotation tells a controller that the object returned is automatically serialized into JSON and passed back into the HttpResponse object.
+
+
+
+@RequestMapping:
+--------------------
+ This annotation is used to map HTTP requests to a specific handler  method in your controller classes. 
+It can be applied at the class level to define a base URL for all methods in the class, or at the method level to specify a specific URL mapping.
+
+
+@GetMapping:
+----------------------
+The GET HTTP request is used to get single or multiple resources and @GetMapping annotation for mapping HTTP GET requests onto specific handler methods.
+
+
+@PostMapping:
+-----------------
+
+The POST HTTP method is used to create a resource and @PostMapping annotation for mapping HTTP POST requests onto specific handler methods.
+
+@PutMapping: 
+----------------
+
+The PUT HTTP method is used to update the resource and  @PutMapping annotation for mapping HTTP PUT requests onto specific handler methods.
+
+@DeleteMapping: 
+--------------------
+The DELETE HTTP method is used to delete the resource and @DeleteMapping annotation for mapping HTTP DELETE requests onto specific handler methods.
+
+
+@PatchMapping: 
+--------------------
+
+The PATCH HTTP method is used when you want to apply a partial update to the resource and @PatchMapping annotation for mapping HTTP PATCH requests onto specific handler methods.
+
+
+@RequestBody: 
+---------------------
+It is used to bind HTTP request with an object in a method parameter. Internally it uses HTTP Message Converters to convert the body of the request. 
+When we annotate a method parameter with @RequestBody, the Spring framework binds the incoming HTTP request body to that parameter.
+
+or
+
+the @RequestBody annotation maps the HttpRequest body to a transfer or domain object, enabling automatic deserialization of the inbound HttpRequest body onto a Java object.
+
+First, let’s have a look at a Spring controller method:
+
+
+Spring automatically deserializes the JSON into a Java type,
+
+By default, the type we annotate with the @RequestBody annotation must correspond to the JSON sent from our client-side controller:
+
+
+
+@PathVariable:
+------------------
+ It is used to extract the values from the URI. It is most suitable for the RESTful web service, where the URL contains a path variable. 
+We can define multiple @PathVariable in a method.
+
+
+@RequestParam: 
+---------------------
+It is used to extract the query parameters form the URL. It is also known as a query parameter. It is most suitable for web applications. 
+It can specify default values if the query parameter is not present in the URL.
+
+
+
+
+
+@Autowired: 
+--------------
+ Spring provides annotation-based auto-wiring by providing @Autowired annotation. 
+It is used to auto wire spring bean on setter methods, instance variable, and constructor. 
+When we use @Autowired annotation, the spring container auto-wires the bean by matching data-type.
+
+
+
+@Configuration: 
+--------------------
+This annotation is used to indicate that a class contains configuration methods for the application context. 
+It is typically used in combination with @Bean annotations to define beans and their dependencies.
+
+
+
+
+@Bean:
+-----------------
+ It is a method-level annotation. It is an alternative of XML <bean> tag. It tells the method to produce a bean to be managed by Spring Container.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

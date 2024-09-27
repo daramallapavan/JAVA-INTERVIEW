@@ -1,0 +1,207 @@
+Exception Handling
+------------------
+
+
+exception handling is a mechanism to handle runtime errors.
+
+Exception Handling is mainly used to handle the checked exceptions. If there occurs any unchecked exception such as Null Pointer Exception,
+ it is programmers' fault that he is not checking the code before it being used.
+
+
+
+Exception
+-------------
+
+whenever we execute our  java code there is possibility of something going wrong.
+
+for example:
+-> Suppose there are 10 statements in a Java program and something goes wrong in statement 5, it will print 1-4 statements, and JVM  terminates the program
+and rest of code will not be printed.it will gives a exception.
+
+->so we can catch and handle the exception , so rest of the code will be  printed.
+->, when we perform exception handling, the rest of the statements will be executed. 
+
+Exception is an abnormal behaviour, which occurs during the execution of  a program, at runtime , that disturbs the normal flow of the programs instructions.
+
+
+
+Error
+------------------
+->  beyond our control. For example, we are unable to do anything if there occurs Virtual Machine Error or Stack Overflow Error.
+
+
+
+checked exceptions
+-----------------------
+-> The compiler forces program to handle this exception.
+
+-> Checked exceptions are exceptions that must be either caught or declared in the method signature using the throws keyword.
+
+
+-> Checked exceptions are checked at compile time.
+
+File Not Found Exception
+-> I am trying to read from the file and that file is not exist so this is the scenario where File Not Found exception might happen
+IO Exception
+SQL Exception
+
+
+
+
+unchecked exceptions
+-----------------------
+-> Unchecked exceptions, are not required to be declared or caught and are checked at runtime.
+
+-> This is a logical problem in the program. your are not required to handle this exception , but you can handle it if you want.
+
+-> under our control so we can correct our code.
+
+-> that is problem with your logic , you change the logic and that exception disappears.
+
+
+Arithmetic Exception
+ -> if you divide by zero , then arithmetic exception might happen 
+Null pointer Exception 
+-> if any object reference is null, and you  try to access on that reference  , then null pointer exception might happen
+Array Index Bounds Of Exception
+
+
+
+try
+----------
+
+java try block is used to enclose the code that might throw an exception . it must be used within the method
+
+if an exception occurs at the particular statement in the try block, the rest of the block code will not execute.
+ So it is recommended not to keep the code in try block that will not throw an exception. 
+
+try block must be followed by either catch or finally block
+
+
+catch
+-------------
+the catch block must be used after the try block only.
+
+java catch block is used to handle the exception by declaring the type of exception within the parameter.
+the declared exception must be the parent class exception  or generated exception type.
+
+the good approach is to declare the generated type of exception.
+
+you can use multiple catch blocks with a single try block.
+
+
+finally block:
+--------------------
+
+finally block will be executed irrespective of the exception or not. 
+-> The only case where finally block is not executed is when it encounters ‘System. Exit()’ method anywhere in try/catch block.
+
+
+Any resource (File or database connection or network connection etc…) needs to be released after they are used to avoid resource leaks and also make them available for others to use.  finally blocks are used to close the resources. 
+As you know, finally blocks are executed irrespective of whether try block is successfully executed or not.
+ This makes sure that resources are released after their usage in try block if you keep resources closing statements in finally block.
+
+
+
+For example, in the below program, FileOutputStream fos is the resource which is used in try block to write into Resource.txt and closed in finally block.
+
+
+
+memory leak
+-------------
+there are objects present in the heap that are no longer used, but the GC unable to remove them from  memory.
+
+
+
+
+try with multiple catch block
+---------------------------------
+a try block can be followed by one or more catch blocks.
+
+each catch block must contain a different exception handler.
+
+so if you have to perform different tasks at the occurrence of different exceptions, use java multi catch blocks
+
+at a time only one exception occurs and at a time only one catch block is executed.
+
+multi catch block must be ordered from most specific to most general .
+
+
+
+
+throw
+-----------
+
+The java throw keyword is used to throw an exception explicitly.
+
+we specify the exception object which is to be thrown. the exception has some message with it that provides the error description .
+these exceptions may be  related to user inputs....
+
+. It is mainly used to throw a custom exception. 
+
+we can throw either checked or unchecked exceptions in java by throw keyword.
+
+we can also define our own set of conditions and throw an exception explicitly using throw keyword
+example: if age is < 18 , throw Arithmetic ("person not eligible to vote")
+
+
+
+
+throws
+--------------
+The Java throws keyword is used to declare an exception.
+
+ It gives an information to the programmer that there may occur an exception.
+ So, it is better for the programmer to provide the exception handling code so that the normal flow of the program can be maintained.
+
+
+
+ we can declare Checked exception only, because: unchecked exception: under our control so we can correct our code.
+
+Advantage of Java throws keyword
+Now Checked Exception can be propagated (forwarded in call stack).
+It provides information to the caller of the method about the exception.
+
+
+
+Explain exception propagation.
+----------------------------
+The method at the top of the stack throws an exception if it is not caught. It moves to the next method and goes on until caught.
+
+
+
+ Try With Resources 
+------------------------------------------------------------------------------------------------------------------------------------------
+-> Try with resources blocks are introduced from Java 7.
+-> resources used in try blocks are auto-closed. 
+-> No need to close the resources explicitly. 
+-> Resources are implicitly closed
+
+
+From Java 9, try with resources will recognize resources declared outside its body.
+ You can pass the reference of resource declared outside directly to try block. 
+There is no need to declare resources locally within try block.
+
+
+    {
+        File Output Stream fos = new File Output Stream("Resource.txt");
+         
+        try(fos)     //No need to declare resources locally
+        {
+            //Using the resources
+             
+            fos.write("First Line".getBytes());
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
+         
+
+
+
+finalize ():
+-------------------------
+it is available in object class
+once u set the object as a null or if garbage collector will found some object not being used and
+ once we call sustem.gc(), it will call the finalize method

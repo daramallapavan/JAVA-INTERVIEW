@@ -1,0 +1,322 @@
+ final :
+---------------------------
+we cannot reassign 
+finally block:
+--------------------
+
+for clean up activity
+in realtime when we r using with jdbc connection,resultset ,stream open we need to use this finally block to clean those streams
+now since we r using the framework hibernate and jpa those streams are autocloseable 
+but as per the earlier impls we must need to clean those streams or we need to close that connection from that tome we usually use the finally block
+
+
+finalize ():
+-------------------------
+it is available in object class
+once u set the object as a null or if garbage collector will found some object not being used and
+ once we call sustem.gc(), it will call the finalize method
+
+
+
+
+hashocode(): 
+--------------------
+use to generate unique or reference number of an object through which we can easily identify uniqueness of an object
+
+eqauls():
+--------------------
+used to compare the objects based on its content 
+
+is chheched exception raised in compile time:
+---------------------------------------------------
+
+at the time of compile we r getting a warning we r handling  it ,
+
+create a custom exception:
+----------------------------
+
+first we need to create a class ordernotfoundException that extends exception
+create a constructor ,give some messege,i just want to print some msg while throwing the exception ,
+and this msg we need to pass to ur super class
+
+throws:
+-----------------
+ if we define the throws in your method,then whoever will be next method caller,he must need to handled it 
+
+throws means we  r deligating the method to the next method caller,
+ 
+
+try catch senario:order of exception hierachy :
+----------------------------------------------------
+
+ 
+parent class will never be a first statement in ur  catch block 
+
+
+
+string is immutable:
+---------------------------------------------------------------------
+
+string pool is possible only because string is immutable in java.,
+this way runtime saves a lot of heap space because different string variables can refer to the same string variable in the pool.
+
+if string is not immutable then it would cause a severe security threat to the application, for example database username and password are passed as string to get database connection, since string is immutable ,its value cant be changed otherwise any hacker could change the referenced value to cause security issues in the application.
+
+since string is immutable ,it is safe for multitheading ,A single string instance can be shared across different threads. this avoids the use of synchronization for thread safety. 
+
+
+
+since string is immutable,its hashcode is cached at the time of creation. it doesnot need to be calculate again .this makes its a great candidadate for the key in a map.its processing is faster than other hashmap key objects.this is why string is most widely used as hashmap keys.
+
+
+stringbuffer-> mutable , thread safe 
+stringbuilder-> mutable, not thread safe
+
+
+create a immutable class:
+----------------------------------------
+
+make your class as final 
+
+declare variables private and final
+
+say no to setters method,only getter methods
+
+ initialize all variables in constructor
+
+performing cloning of mutable objects while returning from getter method
+
+varible
+-------------
+ List<String> -> new ArrayList<>(variable) from getter methods
+
+Address-> new Address(address.id,address.name) from getter methods
+
+Date-> (Date)date.clone() from getter methods
+
+
+
+storing password string or char[]
+------------------------------------------
+
+char[] is better
+
+Since strings are immutable in java ,If you store the password  as a plain text it will be available in memory until the garbage collector clears it, and string literal is stored in SCP 
+for reusability there is a pretty high chance that it will remain in memory for long duration.
+
+Beacuse its difficult to destroy literal from SCP as GC unable to perform cleanup activity i SCP only it will destroy once jvm restarted so which may leads a high security threat.
+
+Since anyone who has access to  memory dump can find the password in clear text and thats another reason you should always use an encrypted password than plain text.
+
+Since Strings are immutable,There are no way contents of Strings can be changed because any change will produce a new String ,While char[] you can still set all his elements as blank or zero. So stroring the password in character array clearly mitigates security risk of stealing passwords.
+
+
+marker interface
+----------------------
+
+it is an interface that has no methods and constants inside it.
+Java has many marker interfaces Cloneable,Serializable,Remote
+It provides runtime information about objects, so the compiler and JVM have additional infromation about the object.
+
+example-> cloneable
+if we try to clone an object that doesnot implements this interface, the JVM throws CloneNotSupportedException, Hence the Cloneable marker interface is an indicator to the JVM  that
+we can call the Object.clone().
+
+lets assume i just want to create my own database framework where if a entity implements interface then only i want to perform delete ,insert,update operations 
+
+
+
+Collections
+----------------------
+
+list -> 
+
+list  will allows to store duplicate objects
+list work on index based
+
+list used,when we want to frequestly accessed the elemnents by using the  index 
+
+if you want to duplicate objects, then go for a list
+
+
+
+set-> 
+set will not allows to store  duplicates objects
+
+set work on based on the hash
+set used, when we want to design a collection of distinct elements
+
+if you want to unique objects,then go for a set
+
+
+Arraylist
+--------------
+Arraylist internally uses a dynamic array to store the elements.
+Manipulation with arraylist is slow, because it internally uses an array, if any element is removed from the array , all the bits are shifted in memory.
+
+
+example:
+let say i added five elements in list, 1 2 3 4 5 and it converted to the array , now my array contains 1 2 3 4 5 
+lets assume i just want to remove  third element which is 3 , if i remove the 3rd then their will be two more  elements 4 and 5, this 4, 5 need to shift to my previous , where earlier 3 rd 
+is there or 3, these kind of memory shifted in arraylist
+
+Arraylist is better for storing and accessing data.
+ 
+
+LinkedList
+--------------
+Linkedlist internally uses a doubly linkedlist to store the elements.
+Manipulation linkedlist is faster than arraylist, because it uses a doubly linkedist, so no bit shifting is required in memory.
+LinkedList is better for manipulating  data.
+
+
+Comparable 
+-------------
+
+It is present in the java.lang package
+
+It provides a single sorting sequence
+
+ Comparable-> compareTo();
+
+Comparator
+------------
+It is present in the java.util package
+
+It provides a multiple sorting sequence
+
+Comparator-> compare()
+
+
+failfast iterator
+------------------
+
+when we do any modification while iterating a collection is called fail fast iterator.
+
+ArrayList,HashMap
+
+FailSafe Iterator iterator
+-----------------------
+
+iterator who allows us to modify in middle while iterating a collection is called non fail fast or fail safe iterator.
+
+CopyOnWriteArrayList, CopyOnWriteArraySet, ConcurrentHashMap
+
+
+Hashmap
+-----------------------
+
+it is non synchronized
+not thread safe
+ it is fail fast and throws an exception during iteration.
+it allows for storing null key and values.
+performance->faster
+
+ConcurrentHashMap
+------------------------------
+
+it is synchronized
+it is thread safe
+it is fail safe and perform iteration by multiple threads
+it doesnot  allow to store null keys and values
+performance-> slower
+
+
+hashtable
+----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+20-03-2023
+--------------------
+1.Clone the repositories in local.
+2.import the application in Intellij.
+3.Run the application in local and Tested.
+4.Quote creation5.Tested in development also (inspect mode)
+
+21-03-2023
+------------
+1.Done the installation on lens.(It is used to see the logs in the dev)
+2.Learned about tokens.(created user token in lens)
+if we not provided token ,,it will throw an exception like status code .
+
+
+
+
+

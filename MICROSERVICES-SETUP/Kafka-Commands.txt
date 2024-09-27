@@ -1,0 +1,35 @@
+
+
+
+
+
+Zookeeper
+------------------------------
+
+  cd kafka_2.12-3.8.0
+
+ 
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+Kafka-Server
+--------------------------------------------
+  cd kafka_2.12-3.8.0
+
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+http://localhost:9092/
+
+
+Kaf drop
+------------------------
+
+ cd Kafka-Monitoring
+
+ java -jar kafdrop-4.0.2.jar
+
+
+open
+
+http://localhost:9089/

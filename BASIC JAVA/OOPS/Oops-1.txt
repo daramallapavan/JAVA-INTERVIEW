@@ -1,0 +1,358 @@
+
+Explain the concept of object-oriented programming in Java.
+-------------------------------------------------------------------
+
+-> Object-Oriented Programming is a methodology  to design a program using classes and objects.
+ It simplifies software development and maintenance by providing some concepts:
+
+-> OOP principles include encapsulation, inheritance, polymorphism, and abstraction.
+
+Advantages
+------------
+->  OOPs makes development and maintenance easier
+
+-> We can provide the solution of real word problem if we are using the Object-Oriented Programming language.
+
+-> OOPs provides data hiding
+
+
+
+What is an object in Java
+------------------------------------------------------------------------------------------------------------------------------------------
+
+-> An entity that has state and behavior is known as an object
+-> For Example, Pen is an object. Its name is Reynolds; color is white, known as its state. It is used to write, so writing is its behavior.
+
+
+
+What is a class in Java
+A class is a group of objects which have common properties. It is a template or blueprint from which objects are created. It is a logical entity. It can't be physical.
+
+A class in Java can contain:
+
+Fields
+Methods
+Constructors
+Blocks
+Nested class and interface
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Encapsulation
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Encapsulation is a process of  combining  the data and the functions  into a single unit called class.
+
+Encapsulation is achieved by declaring the instance variables of a class as private, which means they can only be accessed within the class.
+create  public getter and setter methods of those variables in order to allow access of those variables from outside the class.
+
+
+The main advantage of Encapsulation in Java is its ability to protect the internal state of an object from external modification or access. 
+
+it is a way of hiding the implementation details of a class from outside access and only exposing a public interface that can be used to interact with the class. 
+
+
+Encapsulation Real-world Examples
+
+---->
+the bag contains different stuffs like pen, pencil, notebook..
+In order to get any stuff you need to open that bag,
+similarly in java  an encapsulation unit contains its data and behavior within it and in order to access them you need an object of that unit.
+------------>
+
+Suppose you have an account in the bank.
+ if your balance variable is declared as a public variable in the bank software.
+your account balance will be known as public, in this case anyone can know your account balance.
+
+so , they declare balance variable as private for making your account safe, so that anyone cannot see your account balance.
+
+The person who has to see his account balance, will have to access only private members through methods define inside the class and this method will ask your account holder name 
+or user id and password for authentication.
+
+
+public class account{
+
+private double balance;
+
+public double get balance(){
+return balance;
+}
+}
+  
+
+
+
+
+
+
+
+
+
+
+
+Abstraction solves the problem at the design level. 
+Whereas Encapsulation solves the problem at the implementation level.
+
+Encapsulation: Information hiding.
+Abstraction: Implementation hiding.
+
+
+
+Abstraction
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+
+
+example:
+consider an ATM Machine; All are performing operations on the ATM machine like cash withdrawal, money transfer, retrieve mini-statement…etc.
+ but we can't know internal details about ATM.
+
+
+In Java, the abstraction is achieved by Interfaces and Abstract classes. We can achieve 100% abstraction using Interfaces.
+
+Abstract class in Java:
+->
+An abstract class must be declared with an abstract keyword.
+
+It can have abstract  methods and non-abstract methods.
+Abstract method does not have implementation ,Its implementation is provided by the subclasses.
+
+It can have static and  final methods which will force the subclass not to change the body of the method.
+
+It can have Constructors, We cannot create an object for abstract classes
+In abstract class , We have instance variable, abstract methods and non abstract methods,
+We need to initialize the non abstract methods and instance variables. 
+
+
+
+
+Interface:
+->
+interface is a contract ,
+for example if there is an interface, generally
+
+ we just declare the  method signature in the interface.
+
+and 
+It is contract which class has to fulfill.
+if i have an interface and a  class
+class  implements that interface, then class has to provide the  signature and implementation of all the methods that are declared in interface 
+
+An interface in Java is a blueprint of a class. It has static constants and abstract methods.
+
+
+
+
+ all the fields are public, static and final by default.
+There can be only abstract methods in the Java interface, not method body
+ A class that implements an interface must implement all the methods declared in the interface.
+
+Since Java 8, we can have default and static methods in an interface.
+
+
+
+It can support the functionality of multiple inheritance.
+
+->Interfaces are used to define a contract that implementing classes must follow, promoting loose coupling.
+
+--------------------------------------------------------------------------------------------------
+
+Constituents: An abstract class contains instance variables, whereas an interface can contain only constants.
+Constructor and Instantiation: While an interface has neither a constructor nor it can be instantiated, an abstract class can have a default constructor that is called whenever the concrete subclass is instantiated.
+Implementation of Methods – All classes that implement the interface need to provide an implementation for all the methods contained by it. A class that extends the abstract class, however, doesn't require implementing all the methods contained in it. Only abstract methods need to be implemented in the concrete subclass.
+Type of Methods: Any abstract class has both abstract as well as non-abstract methods. Interface, on the other hand, has only a single abstract method.
+
+
+--------------------------------------------------------------------------------------------------------------
+
+What is marker or tagged interface?
+->
+An interface which has no member is known as a marker or tagged interface, 
+for example, Serializable, Cloneable, Remote, etc. They are used to provide some essential information to the JVM so that JVM may perform some useful operation.
+
+
+
+
+Inheritance
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+-> Inheritance in Java is a mechanism where one class (subclass) inherits the properties and behaviors (fields and methods) of another class (superclass). 
+
+-> When you inherit from an existing class, you can reuse methods and fields of the parent class. Moreover, you can add new methods and fields in your existing class also.
+
+->Inheritance represents the IS-A relationship which is also known as a parent-child relationship.
+
+ ->For instance, 
+             a class Dog can inherit from a class Animal, meaning Dog will have access to all the fields and methods defined in Animal, in addition to its own unique attributes.
+
+
+
+
+Why use inheritance in java:
+For Method Overriding (so runtime polymorphism can be achieved).
+For Code Reusability.
+
+Types of inheritance in java
+On the basis of class, there can be three types of inheritance in java: single, multilevel and hierarchical.
+
+Single Inheritance Example
+-------------------------------
+When a class inherits another class, it is known as a single inheritance. 
+example:
+Dog class inherits the Animal class, so there is the single inheritance.
+
+Multilevel Inheritance Example
+-----------------------------------
+When there is a chain of inheritance, it is known as multilevel inheritance. 
+example:
+ Baby dog class inherits the Dog class which again inherits the Animal class, so there is a multilevel inheritance.
+
+Hierarchical Inheritance Example
+---------------------------------
+When two or more classes inherits a single class, it is known as hierarchical inheritance.
+example:
+ Dog and Cat classes inherits the Animal class, so there is hierarchical inheritance.
+
+
+
+Why multiple inheritance is not supported in java?
+------------------------------------------------
+one class inherit two or more classes is called multiple inheritance.
+
+-> If a subclass or child class has two parent classes, that means it inherits the properties from two base classes;
+
+To reduce the complexity and simplify the language, multiple inheritance is not supported in java.
+
+Consider a scenario where A, B, and C are three classes. The C class inherits A and B classes.
+ If A and B classes have the same method and you call it from child class object, there will be ambiguity to call the method of A or B class.
+->  the compiler is unable to decide which method to execute from the child class.
+
+Since compile-time errors are better than runtime errors, Java renders compile-time error if you inherit 2 classes. So whether you have same method or different, there will be compile time error.
+
+hybrid inheritance
+--------------------
+
+ it is the combination of single and multiple inheritance is known as hybrid inheritance.
+
+
+
+Polymorphism
+------------------------------------------------------------------------------------------------------------------------------
+-> Polymorphism in Java is a concept by which we can perform a single action in different ways.
+
+Polymorphism is achieved through method overriding (runtime polymorphism) and method overloading (compile-time polymorphism).
+
+
+Method overloading
+---------------------------
+
+A class having two or more methods with same name but with different arguments then we can say that those methods are overloaded.
+
+There is one method print with one parameter as integer and 
+there is another method print with two parameters as integer
+
+so method having same name but different number of parameters is known as method overloading in java.
+
+
+
+
+Method overloading is used when we want the methods to perform similar tasks but with different inputs .
+
+when an overloaded method is invoked , java first checks the method name and the number of arguments, type of arguments , based on this , compiler executes this method.
+
+compiler decides which method to call at compile time.
+
+static polymorphism is achieved in java using method overloading.
+
+
+compile time polymorphism: 
+->
+The polymorphism which is implemented at the compile time 
+example: method overloading
+
+
+
+
+
+method overriding
+-----------------------------
+
+method overriding in java means redefining a method in a subclass to replace the functionality of superclass method.
+when the method of superclass is overridden in the subclass to provide more specific implementation , it is called method overriding.
+
+Example
+--------------------
+
+There is a parent class and
+
+ there is a child class that extends from the parent class.
+
+then I have one method known as  print in my parent class 
+
+and I override ,I  have the exact same signature in my child class
+
+ in that case I override the behavior of my parent class method into a child class. This is known as Method Overriding.
+
+
+-> subclass method name must be the same as the super class method name.
+
+-> parameters of the subclass method must be the same as super class method parameters.
+
+-> subclass method return type must be the same as the superclass method return type but this rule is applicable until the java 1.4 version only. from the java 1.5 version onwards, 
+covariant return types are also allowed.
+
+* if subclass overrides any method whose return type is Non-Primitive but it changes its return type to subclass type. 
+
+
+-> while the overriding method, we can increase the visibility of the overriding method but cannot reduce it. for example , if the superclass method is protected , we can override as
+a public method in the subclass.
+
+
+-> overriding method cannot throw  checked exceptions but it can throw unchecked exception.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Association
+-------------------------------
+Association represents the relationship between the objects.
+
+ Here, one object can be associated with one object or many objects. 
+
+-> There can be four types of association between the objects:
+
+One to One
+One to Many
+Many to One, and
+Many to Many
+
+->Association can be unidirectional or bidirectional.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

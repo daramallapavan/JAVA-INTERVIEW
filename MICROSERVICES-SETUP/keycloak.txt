@@ -1,0 +1,8 @@
+cd /d D:\KeyCloack\keycloak-24.0.2\bin
+
+kc.bat
+
+kc.bat start-dev
+8080 port access
+
+http://localhost:8080

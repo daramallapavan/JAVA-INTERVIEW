@@ -1,0 +1,8 @@
+@FeignClient(value = "productService",url = "http://localhost:8082/api/product/")
+public interface ProductService {
+
+    @GetMapping("/getProducts")
+    List<Product> getProductList();
+
+//enable main class
+@EnableFeignClients

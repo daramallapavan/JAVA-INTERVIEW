@@ -1,0 +1,150 @@
+
+-> How do you reverse a linked list in Java?
+
+1) Java Program to copy all elements of one array into another array
+2) Java Program to find the frequency of each element in the array
+3) Java Program to left rotate the elements of an array
+4) Java Program to print the duplicate elements of an array
+
+5) Java Program to print the elements of an array
+6) Java Program to print the elements of an array in reverse order
+7) Java Program to print the elements of an array present on even position
+8) Java Program to print the elements of an array present on odd position
+9) Java Program to print the largest element in an array
+10) Java Program to print the smallest element in an array
+11) Java Program to print the number of elements present in an array
+12) Java Program to print the sum of all the items of the array
+13) Java Program to right rotate the elements of an array
+14) Java Program to sort the elements of an array in ascending order
+15) Java Program to sort the elements of an array in descending order
+16) Java Program to Find 3rd Largest Number in an array
+17) Java Program to Find 2nd Largest Number in an array
+18) Java Program to Find Largest Number in an array
+19) Java to Program Find 2nd Smallest Number in an array
+20) Java Program to Find Smallest Number in an array
+21) Java Program to Remove Duplicate Element in an array
+22) Java Program to Print Odd and Even Numbers from an array
+23) How to Sort an Array in Java
+
+
+->  Write a Java program to reverse an array without using an additional array?
+
+->   Write a Java Program to swap two numbers with and without using the third variable.
+
+
+
+->  Write a Java Program to iterate HashMap using While and advance for loop.
+
+->Write a Java Program to iterate ArrayList using for-loop, while-loop, and advance for-loop.
+
+->  Write a Java Program to find whether a number is prime or not.
+
+
+
+-> Write a Java Program for the Fibonacci series and using recursion.
+
+-> How can you find the factorial of an integer in Java?
+
+
+->  Write a Java Program to find the duplicate characters in a string.
+
+-> How do you find duplicate elements in an array?
+
+->  How do you remove duplicate elements from an array?
+
+-> Write a Java Program to find the second-highest number in an array.
+
+->  Write a Java Program to check Armstrong number.
+
+-> Write a Java Program to remove all white spaces from a string with  and without using replace().
+
+->  How do you sort the array elements?
+
+-> How to sort array elements by frequency in Java?
+
+->  How do you find the intersection of two arrays in Java?
+
+->  How do you find a missing number in an array of integers if it contains elements from 1 to n where n is the number of elements?
+
+-> How do you find the most frequent element in an array?
+
+->  How to merge two sorted arrays in Java?
+
+-> How do you merge two unsorted arrays into single sorted array?
+
+->  How do you merge two sorted or unsorted arrays into single sorted array without duplicates?
+
+-> How do you find smallest and second smallest element in an integer array?
+
+-> Write a Java program to find second largest element in an array of integers?
+
+->  Write a Java program to check the equality of two arrays?
+
+-> Write Java program that checks if two arrays contain the same elements.
+
+-> Write a Java program to find union and intersection of multiple arrays?
+
+-> Write a Java program to find all pairs of elements in an integer array whose sum is equal to a given number?
+
+->  Write a Java program to find continuous sub array whose sum is equal to a given number?
+
+->  Write a Java program to find contiguous sub array with maximum sum?
+
+-> Write a Java program which prints all contiguous sub arrays with given sum?
+
+-> Write a Java program to separate zeros from non-zeros in an integer array?
+
+-> Write a Java program to convert an array to ArrayList and an ArrayList to array?
+
+-> Write a Java program to count occurrences of each element in an array? ->Write a Java program to find the most frequent element in an array?
+
+-> Write a Java program to find the minimum absolute difference between any two elements of the given array?
+
+-> How to sort an array of 0s and 1s in Java?
+
+->  How to sort an array of 0s, 1s and 2s in Java?
+
+->  Write a Java program which finds triplets in the given array whose sum is equal to given number?
+
+-> Write a Java program to find array triplets such that sum of first two elements equals the third element?
+
+->  Array Rotation Program In Java
+
+->  How do you get the sum of all elements in an integer array in Java?
+
+
+
+
+ right totation
+ ---------------------
+    int temp;
+          
+        for (int i = 1; i <= n; i++) 
+        { 
+            temp = inputArray[inputArray.length-1]; 
+              
+            for (int j = inputArray.length-1; j > 0; j--) 
+            {
+                inputArray[j] = inputArray[j-1];
+            }
+              
+            inputArray[0] = temp;
+        }
+		
+		
+		left totation
+		---------------------------
+		
+		    int temp;
+          
+        for (int i = 0; i < n; i++)
+        {
+            temp = inputArray[0];
+              
+            for (int j = 0; j < inputArray.length-1; j++) 
+            {
+                inputArray[j] = inputArray[j+1];
+            }
+              
+            inputArray[inputArray.length - 1] = temp;
+        }

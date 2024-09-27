@@ -1,0 +1,15 @@
+eureka.client.service-url.default-zone=http://localhost:8761/eureka
+
+server.port=8761
+eureka.instance.hostname=localhost
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+
+
+
+	<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.3.0</version>
+		</dependency>

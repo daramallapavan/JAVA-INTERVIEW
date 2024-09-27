@@ -1,0 +1,33 @@
+C:\Users\DELL>D:
+
+D:\>cd D:\jar
+
+D:\jar>dir
+
+D:\jar>java -jar zipkin-server-3.0.6-exec.jar
+
+
+http://127.0.0.1:9411/
+
+
+
+D:\KafkaFolder\kafka
+
+cd D:\
+
+
+-------------------------------------------------------
+
+spring:
+  zipkin:
+    base-url:  http://127.0.0.1:9411/
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+
+

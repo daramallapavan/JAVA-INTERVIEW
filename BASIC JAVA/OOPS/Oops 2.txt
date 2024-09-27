@@ -1,0 +1,280 @@
+
+What is a method in Java?
+-------------------------------------------------------------------------------------------------------------------
+-> A method is a block of code  to perform a certain task or operation
+
+* a method is a collection of statements that perform some specific task and return the result to the caller
+
+-> It is used to achieve the reusability of code. We write a method once and use it many times. We do not require to write code again and again.
+
+-> The method is executed only when we call it.
+
+
+
+Constructors
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Constructors in java is a special method that is used to initialize objects. The constructor is called when an object of class is created.
+
+Constructors are used to assign values to the class variables at the time of object creation , either explicitly done by the programmer or by java itself (default constructor).
+
+
+
+Does Constructor return any value
+-----------------------------------
+There are no return value statements in constructor, but constructor returns current class instance. we can write 'return' inside a constructor.
+
+
+Types of constructors
+-----------------------
+Default constructor: 
+->
+ A constructor that has no parameter is known as default constructor.
+
+if we don't define a constructor in a class, then complier creates default constructor for the class. it also adds super() as the first statement.
+
+The default constructor is used to provide the default values to the object like 0, null, etc., depending on the type.
+
+
+Parameterized constructor:
+
+-> A constructor that has parameters is known as parameterized constructor.
+
+if we want to initialize fields of the class with your own values, then use a parameterized constructor.
+
+
+
+copy constructor
+------------------
+
+if a constructor is used to copy the details from another object then it is called copy constructor.
+
+-> this is useful when we want create a copy of an existing object.
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Java static keyword
+----------------------
+
+-> The static keyword in Java is used for memory management mainly.
+->  We can apply static keyword with variables, methods, blocks and nested classes. 
+-> The static keyword belongs to the class than an instance of the class.
+
+
+ Java static variable
+------------------------
+-> If you declare any variable as static, it is known as a static variable.
+
+ -> The static variable can be used to refer to the common property of all objects , for example, the company name of employees, college name of students, etc.
+
+ -> The static variable gets memory only once in the class area at the time of class loading.
+
+example:
+Suppose there are 500 students in my college, now all instance data members will get memory each time when the object is created. All students have its unique rollno and name, so instance data member is good in such case. Here, "college" refers to the common property of all objects. If we make it static, this field will get the memory only once.
+
+
+
+
+Java static method
+------------------------------
+If you apply static keyword with any method, it is known as static method.
+
+A static method belongs to the class rather than the object of a class.
+A static method can be invoked without the need for creating an instance of a class.
+A static method can access static data member and can change the value of it.
+
+The static method can not use non static data member or call non-static method directly.
+this and super cannot be used in static context.
+
+question::
+-------------
+Why is the Java main method static?
+Ans) It is because the object is not required to call a static method. If it were a non-static method, JVM creates an object first then call main() method that will lead the problem of extra memory allocation.
+
+
+ Java static block
+--------------------
+Is used to initialize the static data member.
+It is executed before the main method at the time of class loading.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+this keyword in Java
+------------------------
+In Java, this is a reference variable that refers to the current object.
+
+this can be used to refer current class instance variable.
+this can be used to invoke current class method (implicitly)
+this() can be used to invoke current class constructor.
+
+
+super
+-------------------------------
+The super is a reference variable which is used to refer immediate parent class object.
+
+Whenever you create the instance of subclass, an instance of parent class is created implicitly which is referred by super reference variable.
+
+Usage of Java super Keyword
+super can be used to refer immediate parent class instance variable.
+super can be used to invoke immediate parent class method.
+super() can be used to invoke immediate parent class constructor.
+
+super()
+-------
+->  it is used to call the constructor of the parent class
+-> this is useful when you want to initialize the parent class variable before you initialize the subclass variables.
+-> it is a useful feature to achieve constructor chaining.
+
+example:
+-> In this example ,
+-> the dog class extends the animal class. The dog class has a constructor that takes two parameters name and breed.
+-> the dog class constructor calls the super() statement to call the constructor of the animal class.
+-> this initializes the name variable in the animal class.
+
+
+final
+------------------------------------------------------------------------------------------------------------------------------------------
+
+The final keyword in java is used to restrict the user
+
+Java final variable:
+->
+If you make any variable as final, you cannot change the value of final variable(It will be constant).
+
+Java final method:
+->
+If you make any method as final, you cannot override it.
+
+Java final class:
+->
+If you make any class as final, you cannot extend it.
+
+
+instance Of
+-----------------------------------------------------------------------------------------------------------------------------------------
+The java instance of operator is used to test whether the object is an instance of the specified type (class or subclass or interface).
+
+
+
+package
+------------
+
+-> A Java package is a namespace that organizes a set of related classes and interfaces.
+->  Packages help avoid name conflicts, provide access protection, and make it easier to locate and use classes. 
+-> They also improve code maintainability by grouping logically related classes together.
+
+
+access modifier
+----------------------
+
+Private:
+->  The access level of a private modifier is only within the class. It cannot be accessed from outside the class.
+
+Default:
+-> The access level of a default modifier is only within the package. It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
+
+Protected: 
+-> The access level of a protected modifier is within the package and outside the package through child class. If you do not make the child class, it cannot be accessed from outside the package.
+
+Public: 
+-> The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, within the package and outside the package.
+
+
+wrapper classes
+------------------------
+The wrapper class in Java provides the mechanism to convert primitive into object and object into primitive.
+
+Java Recursion
+--------------
+Recursion in java is a process in which a method calls itself continuously. A method in java that calls itself is called recursive method.
+
+Call By Value
+---------------------
+-> If we call a method passing a value, it is known as call by value. 
+
+ ->  if we pass a primitive value, it will not change the original value.
+-> If we pass object in place of any primitive value, original value will be changed
+
+Object Cloning in Java
+------------------------
+The object cloning is a way to create exact copy of an object.
+
+-> The clone() method saves the extra processing task for creating the exact copy of an object. If we perform it by using the new keyword, it will take a lot of processing time to be performed that is why we use object cloning.
+
+
+Object class in Java
+---------------------------
+The Object class is the parent class of all the classes in java by default. In other words, it is the topmost class of java.
+
+The Object class is beneficial if you want to refer any object whose type you don't know. 
+
+Notice that parent class reference variable can refer the child class object, know as upcasting.
+
+
+
+static binding
+--------------------------------------
+When type of the object is determined at compiled time(by the compiler), it is known as static binding.
+
+If there is any private, final or static method in a class, there is static binding.
+
+Dynamic binding
+---------------------------------------------
+When type of the object is determined at run-time, it is known as dynamic binding.
+
+
+compile time polymorphism
+-------------------------------------
+
+If you overload a static method in Java, it is the example of compile time polymorphism. 
+
+Example of Java Runtime Polymorphism
+-----------------------------------------------
+
+In this example, we are creating two classes Bike and Splendor. Splendor class extends Bike class and overrides its run() method. We are calling the run method by the reference variable of Parent class. Since it refers to the subclass object and subclass method overrides the Parent class method, the subclass method is invoked at runtime.
+
+Since method invocation is determined by the JVM not compiler, it is known as runtime polymorphism.
+
+
+
+shallow copy
+----------------
+-> a shallow copy creates a new object that references the same memory locations as the original object.
+-> changes made to the data in one object will be reflected in the other object.
+
+Deep Copy
+------------
+A deep copy creates a new object with entirely new copies of all the data within the original object.
+-> Changes made to the data in one object will not affect the other object.
+
+
+By implementing the Cloneable interface and override the clone() method , you can create a deep copy of the object .
+Within the clone() method , you would perform a deep copy of all the fields, including any referenced objects.
+
+
+
+What is the purpose of the transient keyword in Java?
+-------------------------------------------------------
+-> The transient keyword in Java is used to indicate that a field should not be serialized when an object is converted to a byte stream.
+->  This is useful for fields that are not part of the object's persistent state or that are derived from other fields and do not need to be stored.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

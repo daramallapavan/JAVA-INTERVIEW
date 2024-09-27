@@ -1,0 +1,24 @@
+management.endpoints.web.base-path=/manage
+management.endpoints.web.exposure.include=*
+management.server.port=8090
+
+-----------------------------------------------------
+
+
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.stereotype.Component;
+
+@Component
+@Endpoint(id = "customEndpoint")
+public class CustomActuatorEndpoint {
+
+    @ReadOperation
+    public String endpointData(){
+        return "This data came from the custom actuator endpoint....";
+    }
+
+}
+
+
+----------------------------------------------------------------

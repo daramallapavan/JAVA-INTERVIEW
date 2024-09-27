@@ -1,0 +1,31 @@
+load properties from properties file
+--------------------------------------------
+
+@Value
+
+@ConfigurationProperties
+-----------------------
+To bind the properties in class fields, we need to create fields with the exactly same name as the property name. also we must mention the prefix.
+
+
+@PropertySource-> It is used to register the property files in a spring application.
+
+
+
+Application. Properties
+------------------------
+By default, Spring boot automatically loads the application. properties whenever it starts up .
+
+
+We can access the  properties defined in application. properties using @value annotation.
+
+
+
+
+
+spring.main.allow-circular-references=true
+
+
+profiles
+--------------------------------------------------------------------------------------------------------------------
+

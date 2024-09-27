@@ -1,0 +1,118 @@
+Kafka Properties
+----------------------------------
+Consumer Service
+---------------->
+
+spring.kafka.consumer.auto-offset-reset=earliest
+
+
+
+
+
+
+
+
+
+
+
+
+
+@Configuration
+public class KafkaConfiguration {
+
+     @Value( "${spring.kafka.broker}" )
+    private String kafkaBroker;
+
+    @Bean
+    public ProducerFactory producerFactory(){
+        Map<String, Object> props=new HashMap<>();
+
+        props.put( ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,kafkaBroker );
+        props.put( ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class );
+        props.put( ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class );
+        return new DefaultKafkaProducerFactory( props );
+
+    }
+    @Bean
+    public KafkaTemplate kafkaTemplate(ProducerFactory producerFactory){
+        return new KafkaTemplate( producerFactory );
+    }
+}
+---------------------------------------------------------------------
+@RestController
+@RequestMapping("/api")
+public class KafkaController {
+
+
+    private KafkaService kafkaService;
+
+    public KafkaController(KafkaService kafkaService){
+        this.kafkaService=kafkaService;
+    }
+
+    @PostMapping("/send")
+    public Order sendData(@RequestBody Order order){
+       return kafkaService.createRequest(order);
+    }
+}
+----------------------------------------------------------------------
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Order {
+
+    private int orderId;
+
+    private String email;
+
+    private double price;
+
+
+}
+-------------------------------------------------------------------
+@Data
+public class OrderEvent {
+
+    private int orderId;
+
+    private String email;
+
+    private double price;
+
+
+
+}
+-------------------------------------------------------------------
+@Service
+@Slf4j
+public class KafkaService {
+
+  @Autowired
+    private KafkaTemplate<String,String> kafkaTemplate;
+
+  @Value( "${spring.kafka.topic}" )
+  private String topicName;
+
+
+  @Autowired
+  private ObjectMapper objectMapper;
+
+    public Order createRequest(Order order)  {
+
+        OrderEvent orderEvent=new OrderEvent();
+        orderEvent.setEmail( order.getEmail() );
+        orderEvent.setPrice( order.getPrice() );
+        orderEvent.setOrderId( order.getOrderId() );
+
+        try {
+
+            kafkaTemplate.send( topicName,objectMapper.writeValueAsString( orderEvent ));
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException( e );
+        }
+
+        return order;
+    }
+}
+--------------------------------------------------------------------

@@ -1,0 +1,671 @@
+
+
+2) What are main advantages of using Java 8?
+More compact code
+Less boiler plate code
+More readable and reusable code
+More testable code
+Parallel operations
+
+------------------------------------------------------------------------------------------------------------------
+
+3)Stream
+
+-> A Java Stream is a sequence of elements that supports various operations to process data, introduced in Java 8. 
+Streams can be used to perform declarative operations on collections, such as filtering, mapping, and reducing.
+ They allow for efficient and concise data processing and support both sequential and parallel execution.
+
+
+-> Stream  takes input from the  Collections, Arrays.
+
+-> Stream doesn’t change the original data structure, they only provide the result as per the pipeline methods.
+
+
+
+* They allow you to perform complex operations on collections of objects (like list or set).
+
+* Provides methods like map, filter, and flat map to simply data processing.
+
+
+* Streams can be  processed in parallel, which improves performance on multi core processors.
+
+* Easy to work with java collections.
+
+
+why we need stream
+-----------------
+Functional programming
+code reduce 
+bulk operation 
+
+
+
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 5) What are functional interfaces?
+
+It is a new feature in Java, which helps to achieve functional programming approach.
+
+ An Interface that contains exactly one abstract method is known as functional interface.
+
+ It can have any number of default, static methods but can contain only one abstract method.
+
+ It can also declare methods of object class.
+
+
+There are many functional interfaces already present in java such as Comparable, Runnable.
+
+Since Runnable has only one method, it is considered a functional interface.
+
+
+
+Java provides predefined functional interfaces to deal with functional programming by using lambda and method references.
+
+Function
+Supplier
+Consumer
+Predicate
+
+
+
+7) Can you create your own functional interface?
+
+Yes, you can create your own functional interface. 
+
+create an interface
+annotate  that with @FunctionalInterface
+Define exactly one abstract method
+There is no restriction on any number of static and default methods defined in such and interface
+
+
+Java can implicitly identify a functional interface, but still you can also annotate it with  @FunctionalInterface
+It just give you the security that in case , if u by mistake add 2 abstract methods then compiler will throw compile time error.
+
+		 
+----------------------------------------------------------------------------------------------------------------------
+
+
+4) What is lambda expression?
+
+
+-> A lambda expression in Java is a concise way to represent an anonymous function (a block of code with parameters). Introduced in Java 8, 
+lambda expressions enable functional programming by allowing you to pass behavior as an argument to methods, making the code more readable and succinct.
+ They are commonly used with functional interfaces and stream operations.
+
+
+The Lambda expression is used to provide the implementation of an interface which has functional interface.
+ It saves a lot of code.
+
+
+ It is very useful in collection library. It helps to iterate, filter and extract data from collection.
+ 
+
+ 
+ Lambda expression is an anonymous function (without name, return type , access modifier )that has a set of parameters, a lambda (->) symbol, and a function body.
+ 
+Java lambda expression is consisted of three components.
+
+1) Argument-list: It can be empty or non-empty as well.
+
+2) Arrow-token: It is used to link arguments-list and body of expression.
+
+3) Body: It contains expressions and statements for lambda expression.
+
+
+The body of a lambda expression can contain zero, one, or more statements.
+
+:
+
+When there is a single statement curly brackets are not mandatory and the return type of the anonymous function is the same as that of the body expression.
+When there is more than one statement, then these must be enclosed in curly brackets (a code block) and the return type of the anonymous function is the same as the type of the value returned within the code block, or void if nothing is returned.
+
+
+
+Functional interfaces is used to provide reference to lambda expressions.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+8) What is method reference in java 8?
+
+
+
+
+It is used to refer  method of functional interface to an existing method.
+
+Mainly it is used for code reusability.
+
+Functional Interface's abstract method can be mapped to specific existing method using double colon operator (::) . This is Method reference.
+
+Hence Method reference is an alternative to lambda expression.
+
+
+
+
+*Sometimes , a lambda expression only calls an existing method, in those cases ,  you can replace your lambda expression with method reference.
+
+
+* the method is referred to through the use of ::
+
+
+-> they are compact, easy to read  as compared to the lambda expressions.
+
+*In general, one doesn't have to pass arguments to method references.
+
+
+* As lambda expressions help reduce the code compared to any anonymous classes, method references act as the next step for the lambda expression. but like the lambda expressions , the method reference can execute only a single method.
+
+
+-> Whenever we have existing implementation of abstract method of our functional interface then we can go for method reference.
+
+    if no such method is available then go for lambda expression.
+
+
+
+
+
+
+
+
+ 
+ Types of Method References
+ -------------------------------
+
+Reference to a static method.
+Reference to an instance method.
+Reference to a constructor.
+
+
+
+ ----------------------------------------------------------------------------------------------------------------------
+ 
+ 9) What is Optional? Why and how can you use it?
+
+
+Java Optional provides a way to deal with null values.
+It is used to represent a value is present or not.
+
+Null Pointer Exception is a common issue in java application. 
+To prevent  this , we normally add frequent NULL checks in our code to check if a variable is not empty before we use it in our program.
+Optional provides a better approach to handle such situations.
+
+You can view Optional as a single-value container that either contains a value or doesn't
+(it is then said to be empty).
+
+
+of();
+of Nullable();
+is Present();
+get();
+if Present();
+Or Else(_);
+Or Else Get();
+Or Else Throw();
+
+ 
+ It provides methods which are used to check the presence of value for particular variable.
+ 
+ --------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ 10) What are defaults methods? 
+ 
+ 
+Default methods are those methods in an interface that have a body and use the default keyword. 
+They were introduced in Java 8, mainly for backward compatibility.
+
+
+
+ Have you ever faced a situation, 
+            when you created an interface and many classes implemented that interface.
+            Now you need to add new methods to interface. After adding new methods, your java project will be full of compilation errors
+            because you need to add these new methods to all classes which are implementing that interface 
+            (If a class implement an interface then you have to implement all its methods in the class)
+ 
+ 
+ 
+
+
+By adding default method in interface,
+                   you can provide default implementation of it without affecting implementing classes as it includes implementation of that method 
+                   and any implementing class which needs that method can override it.
+
+
+				   
+				   
+				   
+What about multiple Inheritance?
+                Adding default implementation to the interface can give rise to ambiguity in multiple inheritance. 
+				As two interface can provide same default method and there can be ambiguity while calling.
+				Java 8 will give you compile time exception.
+				
+				you can solve this compilation error by overriding decorateWithPaints method in Room class
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Static method
+---------------
+
+Only reason for introducing static methods in interface is that you can call those methods with just interface name.no need to create class and then its object.
+
+Static methods are not available to implementing classes.
+ They are not default methods. They are static.
+
+Hence you can call these methods using interface name explicitly from the implementing classes , as implementing classes won't have access to these methods directly.
+
+(This is the disadvantage of static methods of interface that its not available to implementing classes).
+
+ 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+28) What is predicate function interface?
+
+
+A Predicate is a single-argument function that returns true or false. It has a test method that returns a Boolean. 
+When we use filter in the above example, we are actually passing a Predicate functional interface to it.
+
+-----------------------------------------------------------------------------------------
+
+29) What is consumer function interface?
+
+
+A Consumer is a single-argument functional interface that does not return any value. 
+When we use forEach in the above example, we are actually passing a Consumer functional interface to it.
+
+------------------------------------------------------------------------------------------------------------------------------------
+30) What is supplier function interface?
+
+
+A Supplier is a functional interface that does not take any parameters but returns a value using the get() method.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Common intemediate operations
+
+
+-----
+Map()
+------------
+Map() operation is used to convert Stream<T> to Stream<R>. It produces one output result of type 'R' for each input value of type 'T'. It takes Function interface as parameter.
+For example:
+You have stream of list of employees and you need a list of employee names, you simply need to convert Stream to Stream.
+
+ 
+List<String> employeeNames = employeesList.stream()
+                                .map(e -> e.getName())
+                               .collect(Collectors.toList());
+System.out.println(employeeNames);
+ 
+// Output
+// [Mohan, John, Vaibhav, Amit]
+ 
+StreamMap
+Logical representation of Map operation
+You can also use map even if it produces result of same type.
+In case, you want employee name in uppercase, you can use another map() function to convert string to uppercase.
+
+
+ 
+List<String> employeeNames = employeesList.stream()
+                                .map(e -> e.getName())
+                                .map(s -> s.toUpperCase())
+                                .collect(Collectors.toList());
+System.out.println(employeeNames);
+ 
+// Output
+// [MOHAN, JOHN, VAIBHAV, AMIT]
+
+---------------------------------------------------------------------------------------------------------
+ 
+Filter()
+---------
+Filter() operation is used to filter stream based on conditions. Filter method takes Predicate() interface which returns boolean value.
+Let’s say you want to employees whose name starts with ‘A’.
+You can write following functional code to achieve the same.
+
+ 
+List<String> employeeNames = employeesList.stream()
+                                .map(e -> e.getName())
+                                .filter(s -> s.startsWith("A"))
+                               .collect(Collectors.toList());
+System.out.println(employeeNames);
+ 
+// Output
+// [AMIT]
+ 
+StreamFilter
+Logical representation of Filter operation
+[![StreamFilter]
+
+---------------------------------------------------------------------------
+
+
+sorted()
+---------
+You can use sorted() method to sort list of objects. sorted method without arguments sorts list in natural order.
+ sorted() method also accepts comparator as parameter to support custom sorting.
+
+💡 Did you know?
+
+Natural order means sorting the list based on comparable interface implemented by list element type.
+For example:
+List will be sorted on the basis of comparable interface implemented by Integer class.
+
+Here is the sorted() method example
+
+ 
+List<Employee> employees = employeesList.stream()
+                                            .sorted()
+                                            .collect(Collectors.toList());
+System.out.println(employees);
+ 
+// Output
+// [Employee [name=Amit, age=22], Employee [name=John, age=27], Employee [name=Mohan, age=24], Employee [name=Vaibhav, age=32]]
+ 
+Here is the sorted() method example with Comparator as a parameter.
+
+ 
+List<Employee> employees = employeesList.stream()
+                              .sorted((e1,e2)->e1.getAge() - e2.getAge())
+                               .collect(Collectors.toList());
+System.out.println(employees);
+ 
+// Output
+// [Employee [name=Amit, age=22], Employee [name=Mohan, age=24], Employee [name=John, age=27], Employee [name=Vaibhav, age=32]]
+ 
+You can also rewrite this with method reference as below:
+
+ 
+List<Employee> employees = employeesList.stream()
+                                                .sorted(Comparator.comparing(Employee::getAge))
+                                                .collect(Collectors.toList());
+System.out.println(employees);
+ 
+// Output
+// [Employee [name=Amit, age=22], Employee [name=Mohan, age=24], Employee [name=John, age=27], Employee [name=Vaibhav, age=32]]
+-------------------------------------------------------
+ 
+limit()
+You can use limit() to limit the number of elements in the stream.
+For example:
+limit(3) returns first 3 elements in the list.
+
+Let’s see with the help of an example:
+
+ 
+List<Employee> employees = employeesList.stream()
+                                     .limit(3)
+                                  .collect(Collectors.toList());
+System.out.println(employees);
+ 
+// Output
+// [Employee [name=Mohan, age=24], Employee [name=John, age=27], Employee [name=Vaibhav, age=32]]
+ 
+Skip()
+skip(int n) method is used to discard first n elements from the stream.
+For example:
+skip(3) discards first 3 elements from stream.
+
+Let’s see with help of example:
+
+ 
+List<Employee> employees = employeesList.stream()
+                                     .skip(3)
+                                  .collect(Collectors.toList());
+System.out.println(employees);
+ 
+// Output
+// [Employee [name=Amit, age=22]]
+--------------------------------------------
+ 
+flatmap()
+map() operation generates one output for each input element.
+
+What if you want more than one output for each input?
+flatmap() operation is exactly used for this purpose. It is used to map multiple-output for each input.
+For example:
+We want to accumulate list of cities in which all employees have lived. One employee could have lived in multiple cities so that we may have more than one city for each employee.
+
+Let’s see with help of example:
+
+ 
+List<String> listOfCities = employeesList.stream()
+                                           .flatMap(e -> e.getListOfCities().stream())
+                                           .collect(Collectors.toList());
+ 
+System.out.println("listOfCities: " +listOfCities);
+ 
+// Output
+// listOfCities: [Newyork, Banglore, Paris, London, Pune, Seattle, Chennai, Hyderabad]
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+Common terminal operations
+--------------------------------
+foreach
+foreach() is terminal operation which is used to iterate over collection/stream of objects. It takes consumer as a parameter.
+
+Let’s say you want to print elements of the stream.
+
+ 
+employeesList.stream()
+             .forEach(System.out::println);
+ 
+// Output
+// Employee [name=Mohan, age=24]
+// Employee [name=John, age=27]
+// Employee [name=Vaibhav, age=32]
+// Employee [name=Amit, age=22]
+-------------------------------------------------------------------------------------------------
+ 
+collect
+collect() is terminal operation which performs mutable reduction on the elements of Stream using Collector. Collectors is utility class which provides inbuilt Collector.
+For example:
+Collectors.toList() provides a Collector which converts Stream to a list object.
+Following code accumultates Employee names into a Arraylist
+
+ 
+List<String> employeeNames = employeesList.stream()
+                                          .map(Employee::getName)
+                                          .collect(Collectors.toList());
+System.out.println(employeeNames);
+ 
+// Output
+// [Mohan, John, Vaibhav, Amit]
+ 
+ ---------------------------------------------------------------------------------------
+ 
+Reduce
+The reduce operation combines all elements of Stream and produces single result.
+Java 8 has three overloaded version of reduce method.
+
+Optional<T> reduce(BinaryOperator<T> accumulator):
+This method takes BinaryOperator accumulator function. BinaryOperator is BiFunction where both the operands are of same type. First parameter is result till current execution, and second parameter is the current element of the Stream.
+Let’s find name of Person with minimum age.
+
+ 
+employeesList.stream()
+.reduce( (e1,e2)-> (e1.getAge() < e2.getAge()? e1:e2))
+.ifPresent(System.out::println);
+// Output
+// Employee [name=Amit, age=22]
+ 
+T reduce(T identity, BinaryOperator accumulator):
+This method takes identity value and accumulator function. identity value is initial value of the reduction. If Stream is empty,then identity value is the result.
+Let’s find sum of all ages of Employees
+ 
+int sumAge = employeesList.stream()
+.mapToInt(Employee::getAge)
+.reduce(0, (age1,age2)-> (age1 + age2));
+ 
+System.out.println("Sum of ages of all Employees: "+sumAge);
+// Output
+// Sum of ages of all Employees: 105
+ 
+<U> U reduce(U identity, BiFunction<U,? super T,U> accumulator, BinaryOperator<U> combiner):
+This method takes identity value and accumulator function and combiner. Combiner is mainy used in case of Parallel Streams. 
+Combiner comibnes the result of sub-stream that run in Parallel.
+
+------------------------------------------------------------------------------------------------
+
+count
+count() is used to count number of elements in the stream.
+
+ 
+long empCountStartJ = employeesList.stream()
+                                   .map(Employee::getName)
+                                   .filter(s -> s.startsWith("J"))
+                                   .count();
+System.out.println(empCountStartJ);
+ 
+// Output
+// 1
+ 
+ --------------------------------------------------------------------
+ 
+allMatch()
+allMatch() returns true when all the elements in the stream meet provided condition.
+
+This is a short-circuiting terminal operation because operation stops as soon as it encounters any unmatched element.
+
+ 
+boolean allMatch = employeesList.stream()
+                                .allMatch(e ->e.getAge()>18);
+ 
+System.out.println("Are all the employess adult: " +allMatch);
+ 
+// Output
+// Are all the employess adult: true
+ 
+ ---------------------------------------------------------------------------------------------
+ 
+nonMatch()
+nonMatch() returns true when all the elements in the stream do not meet provided condition.
+
+This is a short-circuiting terminal operation because operation stops as soon as it encounters any matched element.
+
+ 
+boolean noneMatch = employeesList.stream()
+                                 .noneMatch(e ->e.getAge()>60);
+ 
+System.out.println("Are all the employess below 60: " +noneMatch);
+ 
+// Output
+// Are all the employess below 60: true
+ 
+ -----------------------------------------------------------------------------------------------------
+ 
+anyMatch()
+anyMatch() returns true when any element in the stream meets provided condition.
+
+This is a short-circuiting terminal operation because operation stops as soon as it encounters any matched element.
+
+ 
+boolean anyMatch = employeesList.stream()
+                                 .anyMatch(e ->e.getAge()>30);
+ 
+System.out.println("is any employee's age greater than 30: " +anyMatch);
+ 
+// Output
+// is any employee's age greater than 30: true
+ 
+ -------------------------------------------------------------------------------------------------------------------
+ 
+min()
+min(Comparator) returns minimum element in the stream based on the provided comparator. It returns an object which contains actual value.
+
+ 
+Optional<Employee> minEmpOpt = employeesList.stream()
+                                            .min(Comparator.comparing(Employee::getAge));
+ 
+Employee minAgeEmp = minEmpOpt.get();
+System.out.println("Employee with minimum age is: " +minAgeEmp);
+ 
+// Output
+// Employee with minimum age is: Employee [name=Amit, age=22]
+------------------------------------------------------------------------------------------------------------------------
+
+ 
+max()
+max(Comparator) returns maximum element in the stream based on the provided comparator. It returns an object which contains actual value.
+
+ 
+Optional<Employee> maxEmpOpt = employeesList.stream()
+                                            .max(Comparator.comparing(Employee::getAge));
+ 
+Employee maxAgeEmp = maxEmpOpt.get();
+System.out.println("Employee with maxium age is: " +maxAgeEmp);
+ 
+// Output
+// Employee with maxium age is: Employee [name=Vaibhav, age=32]
+ 
+ -----------------------------------------------------------------------------------------------------------------------------------------
+ 
+ Parallel Streams
+ 
+ Parallel Stream takes the benefits of all available CPU cores and processes the tasks in parallel. 
+ If number of tasks exceeds the number of cores, then remaining tasks wait for currently running task to complete.
+ 
+ It is easy to convert sequential Stream to parallel Stream just by adding .parallel
+ 
+ --------------------------------------------------------------------------------------
+ 
+ 
+
+
+
+Types of Stream operations
+
+
+   Intermediate operations: 
+                return a stream that can be chained with other intermediate operations with dot .
+				
+Map()				
+Filter()
+sorted()
+limit()
+Skip()
+flatmap()
+   
+   
+   
+    Terminal operations: 
+	             return void or non stream output.
+ foreach				
+collect
+Reduce
+count
+allMatch()
+nonMatch() 
+anyMatch()
+min()
+max()
+				 
+				 
+
+
+Convert Stream to IntStream
+
+         You may need to convert Stream to IntStream to perform terminal aggregate operations such as sum or average.
+		 You can use mapToInt(), mapToLong() or mapToDouble() method to convert Stream to primitive Streams.
+		 
+		 
+		 
+		 
+		 
+Common intemediate operations
+
+
+* Map()
+
+Map() operation is used to convert Stream<T> to Stream<R>. It produces one output result of type 'R' for each input value of type 'T'.
+ It takes Function interface as parameter.
+For example:
+     You have stream of list of employees and you need a list of employee names, you simply need to convert Stream to Stream.
+
+ 
+List<String> employeeNames = employeesList.stream()
+                                .map(e -> e.getName())
+                               .collect(Collectors.toList());
+System.out.println(employeeNames);
+ 
+// Output
+// [Mohan, John, Vaibhav, Amit]
